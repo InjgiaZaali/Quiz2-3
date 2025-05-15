@@ -41,6 +41,7 @@ public class Student {
         return "Student: " + name + " " + surname + ", from " + country;
     }
 
+   @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
@@ -51,5 +52,12 @@ public class Student {
         if (surname != null ? !surname.equals(s.surname) : s.surname != null) return false;
         return country != null ? country.equals(s.country) : s.country == null;
     }
+    
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (surname != null ? surname.hashCode() : 0);
+        result = 31 * result + (country != null ? country.hashCode() : 0);
+        return result;
+    }
 }
-
